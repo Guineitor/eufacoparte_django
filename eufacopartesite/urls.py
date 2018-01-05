@@ -1,14 +1,14 @@
 from django.conf.urls import url
 
 
-from .views import (home) 
+from .views import (load_home, load_eventos, load_sobre, load_contato, load_perticipe ) 
 
 
 urlpatterns = [
     url(r'^$', load_home, name="index"),
-    url(r'/eventos/^$', BuildPage.as_view(), name="eventos"),
-    url(r'^/sobre/$', BuildPage.as_view(), name="sobre"),
-    url(r'^/ajuda/$', BuildPage.as_view(), name="participe"),
-    url(r'^/contato/$', BuildPage.as_view(), name="contato"),
+    url(r'/eventos/^$', load_eventos, name="eventos"),
+    url(r'^/sobre/$', load_sobre, name="sobre"),
+    url(r'^/ajuda/$', load_participe, name="participe"),
+    url(r'^/contato/$', load_contato, name="contato"),
 
 ]

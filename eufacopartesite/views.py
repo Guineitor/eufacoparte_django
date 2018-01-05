@@ -9,11 +9,6 @@ from django.views.generic import TemplateView
 from .models import PageLayout
 
 # Create your views here.
-
-
-# class BuildPage(TemplateView):
-# 	model = PageLayout
-# 	
 	
 
 def load_home(request, id=1):
@@ -25,33 +20,42 @@ def load_home(request, id=1):
 	return render(request=request, template_name=template_name, context=context)
 
 
-def load_sobre(request):
-	model = PageLayout
+def load_sobre(request, id = None):
+	# model = get_object_or_404(Comment, page=id)
 	template_name  = "sobre.html"
 	context = {
 		"model": model 
 	}
-	return render(context, template_name)
+	return render(request=request, template_name=template_name, context=context)
 
 
 
-def load_eventos(request):
-	model = PageLayout.objects.filter()
+def load_eventos(request, id = None):
+	# model = get_object_or_404(Comment, page=id)
 	template_name  = "eventos.html"
 	context = {
 		"model": model 
 	}
-	return render(context, template_name)
+	return render(request=request, template_name=template_name, context=context)
 
 
 
-def load_contato(request):
-	model = PageLayout
+def load_contato(request, id = None):
+	# model = get_object_or_404(Comment, page=id)
+	template_name  = "contato.html"
+	context = {
+		"model": model 
+	}
+	return render(request=request, template_name=template_name, context=context)
+
+
+def load_perticipe(request, id = None):
+	# model = get_object_or_404(Comment, page=id)
 	template_name  = "index.html"
 	context = {
 		"model": model 
 	}
-	return render(context, template_name)
+	return render(request=request, template_name=template_name, context=context)
 
 
 	

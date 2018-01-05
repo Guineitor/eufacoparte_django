@@ -1,4 +1,4 @@
-
+{% load staticfiles %}
     
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,10 +14,10 @@
     <title>Eu Faço Parte -  Restaurando Dignidades</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href='{%static "css/bootstrap.min.css"%}' rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/landing-page.css" rel="stylesheet">
+    <link href='{%static "css/landing-page.css"%}' rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -135,10 +135,10 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src='{%static "js/jquery.js"%}'></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src='{%static "js/bootstrap.min.js"%}'></script>
     <script type="text/javascript">
     function getYear(){
         var year = new Date().getFullYear()
