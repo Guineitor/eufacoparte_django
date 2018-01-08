@@ -2,10 +2,10 @@
 
 {% block content %}
 {{ block.super }}
-<a id="Evento"></a>
+<a id="evento"></a>
 <br/>
 <div class="container">
-	<h2>{{ event.label_image }}</h2>  
+	<h2>{{ event.label_image}}</h2>  
 	<div id="Carousel" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
 			<li data-target="#Carousel" data-slide-to="0" class="active"></li>
@@ -14,11 +14,11 @@
 			<div class="item active">
 				<img src="{{ event.image.url }}" alt="{{ event.label_image }}" style="width:100%;">
 			</div>
-			<a class="left carousel-control" href="#Carousel" data-slide="prev">
+			<a class="left carousel-control" href="/{{ event.url_previuous}}#evento" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 				<span class="sr-only">Antorior</span>
 			</a>
-			<a class="right carousel-control" href="#Carousel" data-slide="next">
+			<a class="right carousel-control" href="/{{ event.url_next}}#evento" data-slide="next">
 				<span class="glyphicon glyphicon-chevron-right"></span>
 				<span class="sr-only">Proximo</span>
 			</a>

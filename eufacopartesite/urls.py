@@ -6,6 +6,7 @@ from .views import (load_home, load_eventos, load_sobre, load_contato, load_part
 
 urlpatterns = [
     url(r'^$', load_home, name="index"),
+    url(r'^eventos/$', load_eventos, name="eventos"),
     url(r'^eventos/(?P<id>\d+)/$', load_eventos, name="eventos"),
     url(r'^sobre/$', load_sobre, name="sobre"),
     url(r'^ajuda/$', load_participe, name="participe"),

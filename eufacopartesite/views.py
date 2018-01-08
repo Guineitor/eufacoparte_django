@@ -35,9 +35,9 @@ def load_sobre(request, id = None):
 def load_eventos(request, id=1):
 	template_name  = "eventos.html"
 	if id != None:
-		event = get_object_or_404(EventPicture, id=id)
+		event = get_object_or_404(EventPicture, id=id) or None
 		context = {
-			"event": event 
+			"event": event
 		}		
 	else:
 		print("no url found")
