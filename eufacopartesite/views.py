@@ -6,9 +6,11 @@ from enum import Enum
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 
-from .models import PageLayout
+from .models import PageLayout, EventPicture
 
 # Create your views here.
+
+
 	
 
 def load_home(request, id=1):
@@ -30,12 +32,19 @@ def load_sobre(request, id = None):
 
 
 
-def load_eventos(request, id = None):
-	# model = get_object_or_404(Comment, page=id)
+def load_eventos(request, id=1):
 	template_name  = "eventos.html"
-	context = {
-		"model": "model" 
-	}
+	if id != None:
+		event = get_object_or_404(EventPicture, id=id)
+		context = {
+			"event": event 
+		}		
+	else:
+		print("no url found")
+		context = {
+			"event": "empty" 
+		}
+
 	return render(request=request, template_name=template_name, context=context)
 
 
