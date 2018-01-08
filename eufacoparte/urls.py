@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+
+from django.apps import apps
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -20,9 +22,14 @@ from . import settings
 
 from eufacopartesite.views import load_home
 
+
+eufacosite_name = apps.get_app_config('eufacopartesite').verbose_name
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^eufaco/', load_home, name="home"),
+    # url(r'^', include("eufacopartesite.urls", namespace='eufacopartesite')),
+    url(r'^', include(('eufacopartesite.urls', eufacosite_name), namespace='eufacosite')),
+    # url(r'^eufaco/', load_home, name="home"),
 ]
 
 
