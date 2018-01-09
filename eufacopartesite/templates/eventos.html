@@ -2,28 +2,33 @@
 
 {% block content %}
 {{ block.super }}
+
 <a id="evento"></a>
 <br/>
 <div class="container">
-	<h2>{{ event.label_image}}</h2>  
+	{% for obj in object_list %}
+	<h2>{{ obj.label_image}}</h2>  
 	<div id="Carousel" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
 			<li data-target="#Carousel" data-slide-to="0" class="active"></li>
 		</ol>
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="{{ event.image.url }}" alt="{{ event.label_image }}" style="width:100%;">
+				<img src="{{ obj.image.url }}" alt="{{ obj.label_image }}" style="width:100%;">
 			</div>
-			<a class="left carousel-control" href="/{{ event.url_previuous}}#evento" data-slide="prev">
+			<a class="left carousel-control" href="?{{ page_request_var }}={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 				<span class="sr-only">Antorior</span>
 			</a>
-			<a class="right carousel-control" href="/{{ event.url_next}}#evento" data-slide="next">
+			<a class="right carousel-control" 
+			href="?{{ page_request_var }}={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" 
+			data-slide="next">
 				<span class="glyphicon glyphicon-chevron-right"></span>
 				<span class="sr-only">Proximo</span>
 			</a>
 		</div>
 	</div>
+	{% endfor %}
 </div>
 <br/>
 {% endblock content %}
