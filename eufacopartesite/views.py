@@ -32,8 +32,7 @@ def load_home(request, id=1):
 
 
 def load_sobre(request, id = None):
-	# model = get_object_or_404(Comment, page=id)
-	url_ajax  = "sobre.html"
+	template_name = "sobre.html"
 	context = {
 		"model": "model" 
 	}
@@ -41,9 +40,9 @@ def load_sobre(request, id = None):
 
 
 
-def load_eventos(request, id=1):
+def load_eventos(request, id=2):
 	template_name  = "eventos.html"
-	queryset_list = EventPicture.objects.all(id=id)
+	queryset_list = EventPicture.objects.all()
 	query = request.GET.get("q")
 	if query:
 		queryset_list = queryset_list.filter(
@@ -58,12 +57,12 @@ def load_eventos(request, id=1):
 		queryset = paginator.page(page)
 	except PageNotAnInteger:
 		# If page is not an integer, deliver first page.
-		queryset = paginator.page(1)
+		queryset = paginator.page(id)
 	except EmptyPage:
 		# If page is out of range (e.g. 9999), deliver last page of results.
 		queryset = paginator.page(paginator.num_pages)
 
-	print(queryset_list.count())
+	
 	context = {
 		"object_list": queryset, 
 		"page_request_var": page_request_var

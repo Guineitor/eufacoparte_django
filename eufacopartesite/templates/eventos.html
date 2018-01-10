@@ -7,7 +7,7 @@
 <br/>
 <div class="container">
 	{% for obj in object_list %}
-	<h2>{{ obj.label_image}}</h2>  
+	<h2>{{ obj.image.width}}</h2>  
 	<div id="Carousel" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
 			<li data-target="#Carousel" data-slide-to="0" class="active"></li>
@@ -16,16 +16,20 @@
 			<div class="item active">
 				<img src="{{ obj.image.url }}" alt="{{ obj.label_image }}" style="width:100%;">
 			</div>
-			<a class="left carousel-control" href="?{{ page_request_var }}={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" data-slide="prev">
+			{% if object_list.has_previous %}
+			<a class="left carousel-control" href="?{{ page_request_var }}={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}#evento" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 				<span class="sr-only">Antorior</span>
 			</a>
+			{% endif %}
+			{% if object_list.has_next %}
 			<a class="right carousel-control" 
-			href="?{{ page_request_var }}={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" 
+			href="?{{ page_request_var }}={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}#evento" 
 			data-slide="next">
 				<span class="glyphicon glyphicon-chevron-right"></span>
 				<span class="sr-only">Proximo</span>
 			</a>
+			{% endif %}
 		</div>
 	</div>
 	{% endfor %}

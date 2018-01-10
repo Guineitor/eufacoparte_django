@@ -14,7 +14,7 @@ from django.db import models
 
 
 #define upload path dinam...
-def upload_localtion(instance, filename):
+def upload_location(instance, filename):
     #filebase, extension = filename.split(".")
     #return "%s/%s.%s" %(instance.id, instance.id, extension)
     model = instance.__class__
@@ -35,7 +35,7 @@ class PageLayout(models.Model):
 	position = models.IntegerField()
 	page = models.IntegerField(null=False, blank=False)
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-	image =  models.ImageField(upload_to=upload_localtion,
+	image =  models.ImageField(upload_to=upload_location,
 		null=True, 
 		blank=True, 
 		width_field="width_field",
@@ -56,12 +56,11 @@ class PageLayout(models.Model):
 
 
 class EventPicture(models.Model):
-	user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.SET_DEFAULT)
-	image =  models.ImageField(upload_to=upload_localtion,
-		null=True, 
-		blank=True, 
-		width_field="width_field",
-		height_field="height_field")
+	image = models.ImageField(upload_to=upload_location, 
+            null=True, 
+            blank=True, 
+            width_field="width_field", 
+            height_field="height_field")
 	label_image = models.TextField()
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 	width_field = models.IntegerField(default=300)
@@ -69,9 +68,3 @@ class EventPicture(models.Model):
 
 	def __str__(self):
 		return self.label_image
-
-	def __str__(self):
-		return self.url_next
-
-	def __str__(self):
-		return self.url_previuous
